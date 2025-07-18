@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📨 Spam Detection Dashboard</h1>
+
+        <form action="/predict" method="POST">
+            <textarea name="message" rows="5" placeholder="Paste your message here..."></textarea>
+            <button type="submit">Detect</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <p><strong>Input:</strong> "{{ message }}"</p>
+            <p><strong>Prediction:</strong> 
+                <span class="{{ 'spam' if prediction == 'Spam' else 'not-spam' }}">
+                    {{ prediction }}
+                </span>
+            </p>
+        </div>
+        {% endif %}
+
+        <div class="keywords">
+            <h2>🔥 Most Common Spam Keywords</h2>
+            <ul>
+                {% for word in keywords %}
+                <li>{{ word }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
