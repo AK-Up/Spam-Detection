@@ -2,6 +2,7 @@ body {
     background-color: #0F0F0F;
     color: #E0E0E0;
     font-family: 'Segoe UI', sans-serif;
+    margin: 0;
     padding: 20px;
 }
 
@@ -12,11 +13,18 @@ body {
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 0 15px #8F00FF44;
+    box-sizing: border-box;
 }
 
 h1, h2 {
     text-align: center;
     color: #8F00FF;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 textarea {
@@ -26,8 +34,9 @@ textarea {
     border-radius: 8px;
     padding: 12px;
     color: #fff;
-    resize: none;
+    resize: vertical;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
 button {
@@ -36,7 +45,7 @@ button {
     background-color: #8F00FF;
     color: #fff;
     border: none;
-    padding: 12px;
+    padding: 14px;
     font-size: 1.1em;
     font-weight: bold;
     border-radius: 10px;
@@ -64,19 +73,54 @@ button:hover {
     color: #4CFF72;
 }
 
+.keywords h2 {
+    margin-top: 30px;
+    font-size: 1.3em;
+}
+
 .keywords ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     list-style: none;
     padding: 0;
+    gap: 10px;
     margin-top: 10px;
 }
 
 .keywords li {
     background-color: #222;
-    padding: 8px;
-    margin: 6px;
+    padding: 10px;
     border-radius: 8px;
     text-align: center;
+    font-size: 0.95em;
     border: 1px solid #8F00FF44;
+}
+
+/* 📱 Responsive Tweaks for Mobile */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    textarea {
+        font-size: 1em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 12px;
+    }
+
+    .keywords ul {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+
+    .keywords li {
+        font-size: 0.85em;
+        padding: 8px;
+    }
 }
